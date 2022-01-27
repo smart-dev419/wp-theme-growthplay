@@ -1,0 +1,131 @@
+/* ---------------------------------------------------------
+   Page Title
+   ---------------------------------------------------------*/
+
+// page title
+.page-title {
+    @include v-align(138px, middle, before);
+    background-size: cover;
+    text-align: center;
+    padding: 18px 0;
+    position: relative;
+    overflow: hidden;
+
+    @include media('<tablet') {
+        padding: 11px 0 19px;
+    }
+    
+    &.has-overlay {
+        &:after {
+            width: 100%;
+            height: 500px;
+            background: fade-out(#0076A9, .4);
+            position: absolute;
+            top: 0;
+            content: '';
+            left: 0;
+            z-index: 99;
+        }
+    }
+
+    &.podcasts{
+        background-color: $blue;
+        h1{
+            color: $white;
+        }
+    }
+
+    &:before {
+        @include media('<tablet') {
+            min-height: 114px;
+        }
+    }
+
+    .container {
+        position: relative;
+        z-index: 200;
+    }
+
+    &.border {
+        padding-bottom: 10px;
+
+        @include media('<tablet') {
+            padding-bottom: 5px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(to right, #0085af 0%,#07bcd3 100%);
+
+            @include media('<tablet') {
+                height: 5px;
+            }
+        }
+    }
+
+    &[style*="background-image"] {
+        color: $white;
+
+        h1 {
+            color: $white;
+        }
+    }
+
+    .page-subtitle {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 5px;
+
+        @include media('<tablet') {
+            font-size: 17px;
+        }
+    }
+
+    .page-logo {
+        margin-top: 14px;
+        img{
+            &[alt="emc-no-tag_blue_cmyk"],
+            &[alt="cardinalhealthlogo"],
+            &[alt="nrccua_logo"]{
+                width: 75%;
+            }
+        }
+    }
+
+    h1 {
+        color: $gray;
+        margin-bottom: 0;
+        font-size: 42px;
+        font-weight: 400;
+        text-transform: capitalize;
+
+        @include media('<tablet') {
+            font-size: 28px;
+        }
+    }
+}
+
+// page title blog
+.page-title--blog {
+    padding-top: 38px;
+
+    .title {
+        font-size: 32px;
+        font-family: $roboto-slab;
+        display: block;
+        text-transform: capitalize;
+
+        @include media('<desktop') {
+            margin-bottom: 27px;
+        }
+    }
+
+    .form-subscribe {
+        width: 100%;
+    }
+}

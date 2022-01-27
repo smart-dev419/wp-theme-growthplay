@@ -1,0 +1,92 @@
+// ---------------------------------------------------------
+// Variables
+// ---------------------------------------------------------
+
+// Colors
+// Color calculator - http://razorjam.github.io/sasscolourfunctioncalculator/
+// Color names - http://name-of-color.com/
+
+$gray: #56565a;
+$lightgray: #f8f7f8;
+$black: #000;
+$white: #fff;
+$blue: #1675a9;
+$orient: #00548b;
+$pacific-blue: #00acc8;
+$purple: #003764;
+$green: #c3d600;
+$green1: #7d8a00;
+$red: #fa4c06;
+$orange: #ff9e19;
+$yellow: #e4e833;
+
+$slide-1: $blue;
+$slide-2: #00acc8;
+$slide-3: $orient;
+
+// paths
+$image-path: '../../images';
+$font-path: '../../fonts';
+$icomoon-path: '#{$font-path}/icomoon';
+
+$arial: 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+$roboto-slab: 'Roboto Slab', $arial;
+$base-font-sans-serif: 'Open Sans', $arial;
+$base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
+
+// Body
+$base-text-color: $gray !default;
+$base-background-color: $white !default;
+$font-size-base: 18px !default;
+$line-height-base: 1.42 !default;
+$base-font-family: $base-font-sans-serif !default;
+
+$vertical-rhythm: ($line-height-base * 1em);
+
+$base-min-width: 320px;
+
+// Liks
+$base-link-color: $gray;
+
+// Buttons  
+$btn-color: $white !default;
+$btn-background: $black !default;
+$btn-padding: 0.4em 0.7em !default;
+$btn-font-size: inherit !default;
+
+// Forms
+$form-element-padding: 5px 10px !default;
+$form-element-border-color: #dfdfdf !default;
+$form-element-focus-border-color: $green !default;
+$placeholder-color: $gray !default;
+
+// Headers
+$h1-font-size: 46px !default;
+$h2-font-size: 32px !default;
+$h3-font-size: 24px !default;
+$h4-font-size: 22px !default;
+$h5-font-size: 17px !default;
+$h6-font-size: 15px !default;
+
+$headings-font-family: inherit !default;
+$headings-color: inherit !default;
+
+// grid
+$gutter-width: 30px;
+$gutter-container: 60px;
+$container-width: 1098px;
+$grid-count: 12;
+
+
+$animation-speed: 0.3s;
+
+$bezier: cubic-bezier(0.57, 0, 0.08, 1);
+$bezier2: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+$bezier3: cubic-bezier(0.3, 0.1, 0.05, 1);
+$bezier4: cubic-bezier(0.68, 0, 0.265, 1);
+$easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+$sidebar-animation-speed: 0.3s;
+$sidebar-animation-ease: $bezier4;
+
+

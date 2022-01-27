@@ -1,0 +1,136 @@
+/* ---------------------------------------------------------
+   Contact content
+   ---------------------------------------------------------*/
+
+// contact content
+.contact-content {
+    padding-top: 60px;
+    padding-bottom: 20px;
+
+    @include media('>=tablet') {
+        padding-bottom: 40px;
+        display: table;
+        table-layout: fixed;
+    }
+
+    @include media('>=widescreen') {
+        padding-top: 107px;
+    }
+}
+
+.contact-block {
+    margin: 0 0 40px;
+
+    @include media('>=tablet') {
+        display: table-cell;
+        padding-right: 40px;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 57px;
+        color: $blue;
+        letter-spacing: -2px;
+        margin: 0 0 12px;
+
+        @include media('<widescreen') {
+            font-size: 42px;
+            line-height: 1.2;
+        }
+    }
+
+    .txt-big {
+        font-size: 21px;
+        line-height: 1.333;
+        font-weight: 400;
+        display: block;
+        margin: 0 0 41px;
+
+        @include media('<widescreen') {
+            font-size: 19px;
+            padding-top: 0;
+        }
+    }
+}
+
+.form-holder {
+    padding-top: 23px;
+}
+
+.contact-form {
+    margin: 0;
+    max-width: 674px;
+    overflow: hidden;
+
+    .form-col {
+        @include media('>=widescreen') {
+            float: left;
+            &-L {
+                width: 47%;
+                padding-right: 40px;
+            }
+
+            &-R {
+                width: 53%;
+            }
+        }
+    }
+
+    textarea {
+        min-height: 174px;
+        resize: none;
+        margin-bottom: 30px;
+    }
+}
+
+.contact-info {
+
+    @include media('>=widescreen') {
+        display: table-cell;
+        width: 276px;
+        vertical-align: top;
+        padding-top: 10px;
+    }
+
+    .contact-row {
+        padding-left: 36px;
+        position: relative;
+        margin: 0 0 28px;
+
+        h3 {
+            color: $blue;
+            margin-bottom: 25px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 0;
+            bottom: -8px;
+            width: 4px;
+            background: $blue;
+        }
+
+        &:last-child {
+
+            h3 {
+                color: $purple;
+            }
+
+            &:after {
+                background: $purple;
+            }
+        }
+    }
+
+    address {
+        display: block;
+        font-style: normal;
+        margin: 0 0 25px;
+
+        .title {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,150 @@
+/* ---------------------------------------------------------
+   Media
+   ---------------------------------------------------------*/
+
+// media
+.media {
+    display: table;
+    width: 100%;
+    margin-bottom: 31px;
+
+    &-img,
+    &-body {
+        display: table-cell;
+        vertical-align: top;
+    }
+}
+
+// media ico list
+.media_ico_list {
+    > li {
+        width: 50%;
+
+        @include media('<tablet') {
+            font-size: 12px;
+            margin-bottom: 22px;
+            width: 100%;
+        }
+    }
+
+    .media-img {
+        width: 154px;
+        text-align: center;
+        padding: 19px 20px;
+        float: left;
+
+        @include media('<widescreen') {
+            width: 89px;
+        }
+
+        @include media('<tablet') {
+            width: 99px;
+            padding: 12px 0;
+            text-align: left;
+        }
+    }
+
+    .media-body {
+        overflow: hidden;
+    }
+
+    h3 {
+        color: $blue;
+        text-transform: capitalize;
+        margin-bottom: 19px;
+
+        @include media('<tablet') {
+            margin-bottom: 15px;
+        }
+    }
+
+    p {
+        @include media('<tablet') {
+            // margin-bottom: 0;
+        }
+    }
+}
+
+// media card
+.media_card {
+    @include media('>=tablet') {
+        display: table;
+        width: 100%;
+        margin-bottom: 28px;
+    }
+
+    .media-img {
+        width: 240px;
+        border-bottom: 5px solid transparent;
+
+        @include media('<tablet') {
+            display: none;
+        }
+    }
+
+    h4 {
+        padding: 10px 34px 15px;
+        margin-bottom: 0;
+        color: $white;
+        line-height: 1.2;
+
+        @include media('<tablet') {
+            margin-left: -30px;
+            padding: 10px 10px 15px 52px
+        }
+
+        a {
+            color: $white;
+        }
+
+        br {
+            @include media('<tablet') {
+                display: none;
+            }
+        }
+    }
+
+    p {
+        padding: 14px 15px 10px 34px;
+        margin-bottom: 0;
+
+        @include media('<widescreen-lg') {
+            padding: 19px 15px 21px 34px;
+        }
+
+        @include media('<tablet') {
+            padding: 24px 22px 33px;
+            font-size: 18px;
+        }
+    }
+}
+
+.media--bg1 {
+    .media-img {
+        border-bottom-color: #00acc8;
+    }
+
+    h4 {
+        background: #00acc8;
+    }
+}
+
+.media--bg2 {
+    .media-img {
+        border-bottom-color: #1675a9;
+    }
+
+    h4 {
+        background: #1675a9;
+    }
+}
+
+.media--bg3 {
+    .media-img {
+        border-bottom-color: #003764;
+    }
+
+    h4 {
+        background: #003764;
+    }
+}

@@ -1,0 +1,49 @@
+/* ---------------------------------------------------------
+Partner Select Program Partners Page
+---------------------------------------------------------*/
+
+.partner-page-container {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .current-partners {
+    text-align: left;
+    .box-logo{
+      background-color: transparent;
+      img{
+        max-width: initial;
+        max-height: initial;
+      }
+    }
+  }
+
+  h2 {
+    padding-left: 18px;
+  }
+
+  li {
+    width: 25%;
+  }
+
+  .current-partners {
+    padding-top: 0;
+  }
+
+  @include media('>widescreen') {
+    padding-left:50px;
+  }
+
+  @include media('<tablet') {
+    padding-left: 10px;
+
+    h2 {
+      text-align: center;
+      padding-top: 0;
+    }
+
+    img {
+      max-height: 100%;
+    }
+  }
+
+}

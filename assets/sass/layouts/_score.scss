@@ -1,0 +1,338 @@
+/* ---------------------------------------------------------
+   Score
+   ---------------------------------------------------------*/
+
+// mixin score
+@mixin score($bg) {
+    &:after {
+        background-color: $bg;
+    }
+    .score-title {
+        background-color: $bg;
+    }
+
+    .score-table {
+        td {
+            &:first-child {
+                border-right-color: $bg;
+            }
+
+            &:last-child {
+                @include media('<tablet') {
+                    background: $bg;
+                }
+            }
+        }
+    }
+}
+
+// score
+.score {
+    position: relative;
+    padding-bottom: 20px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 270px;
+        z-index: -1;
+
+        @include media('<widescreen') {
+            width: 204px;
+        }
+
+        @include media('<tablet') {
+            display: none;
+        }
+    }
+
+    &_board {
+        position: relative;
+        border: 1px solid #aaaaad;
+        padding: 32px 38px;
+        margin: 0 -39px 63px;
+
+        @include media('<widescreen-lg') {
+            margin: 0 -15px 41px;
+            padding: 29px 25px;
+        }
+
+        @include media('<tablet') {
+            padding: 29px 20px 18px;
+        }
+
+        &--result {
+            @include media('>=widescreen-lg') {
+                max-width: 890px;
+            }
+        }
+
+        .heading {
+            margin-bottom: 48px;
+
+            h1 {
+                overflow: hidden;
+                text-transform: capitalize;
+                margin-bottom: 0;
+            }
+
+            .print {
+                float: right;
+                margin-left: 30px;
+
+                .icon-print {
+                    font-size: 27px;
+                    margin: 2px 0 0 20px;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    &_result {
+        + .score_result {
+            margin-top: 16px;
+        }
+    }
+
+    &-title {
+        color: $white;
+        font-size: 24px;
+        text-transform: capitalize;
+        margin-bottom: 14px;
+        padding: 9px 24px;
+
+        @include media('<tablet') {
+            margin: 0 -21px 14px;
+            padding: 9px 21px;
+        }
+    }
+}
+// score board result
+.score_board {
+    a {
+        color: $blue;
+    }
+}
+
+// score table
+.score-table {
+    width: 100%;
+
+    @include media('<tablet') {
+        display: block;
+    }
+
+    tbody,
+    tr,
+    td,
+    th {
+        @include media('<tablet') {
+            display: block;
+        }
+    }
+
+    tr {
+        @include media('<tablet') {
+            margin-bottom: 23px;
+        }
+    }
+
+    td {
+        padding: 12px 24px;
+        vertical-align: top;
+
+        @include media('<tablet') {
+            padding: 0 0 8px;
+        }
+
+        &:first-child {
+            font-weight: 600;
+
+            @include media('>=tablet') {
+                text-align: right;
+                width: 124px;
+                border-right: 6px solid $blue;
+            }
+
+            @include media('>=widescreen') {
+                width: 32.8%;
+            }
+
+            @include media('<tablet') {
+                border-right: none;
+            }
+        }
+
+        &:last-child {
+            @include media('>=tablet') {
+                width: 208px;
+            }
+
+            @include media('>=widescreen') {
+                width: 272px;
+                padding: 0 21px;
+            }
+
+            @include media('<tablet') {
+                padding: 7px 10px;
+                margin-top: 10px;
+                text-align: center;
+                border-radius: 30px;
+            }
+        }
+    }
+
+    .list-col {
+        counter-reset: item;
+        color: $white;
+        margin: 0 -11px;
+        line-height: 1;
+
+        > li {
+            padding: 0 10px;
+            text-align: center;
+
+            @include media('<widescreen') {
+                padding: 0 6px;
+            }
+
+            &:before {
+                content: counter(item);
+                counter-increment: item;
+                display: block;
+
+                @include media('<tablet') {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+.score-error {
+    margin: -40px -15px 40px -15px;
+    .content {
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+// score blue1
+.score--blue1 { @include score(#03bbd2); }
+.score--blue2 { @include score(#00acc8); }
+.score--blue3 { @include score(#0085af); }
+.score--blue4 { @include score(#0976aa); }
+.score--blue5 { @include score(#0a3b61); }
+
+// score body
+.score-body {
+    @include media('>=phone') {
+        display: table;
+    }
+
+    @include media('>=tablet') {
+        width: 88%;
+    }
+
+    .score-img,
+    .score-desc {
+        @include media('>=phone') {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        @include media('>=tablet') {
+            padding: 0 28px;
+        }
+    }
+
+    .score-img {
+        width: 242px;
+        position: relative;
+        padding-bottom: 12px;
+
+        @include media('<tablet') {
+            width: 160px;
+            padding: 0 16px 12px 0;
+            margin-bottom: 20px;
+        }
+
+        .score-txt {
+            position: absolute;
+            width: 70px;
+            left: 50%;
+            bottom: 19px;
+            transform: translateX(-50%);
+            text-align: center;
+            line-height: 1.2;
+
+            @include media('<tablet') {
+                font-size: 14px;
+                width: 56px;
+                margin-left: -9px;
+                bottom: 16px;
+            }
+        }
+    }
+}
+
+// score meter
+.score-meter {
+    .sector{fill:#e4e4e5;}
+
+  /*  &.very-bad {
+        .sector:nth-child(1) { fill: #f00; }
+
+        & + .score-txt { color: #f00; }
+    }*/
+
+    &.bad {
+        .sector:nth-child(1) { fill: #f00; }
+
+        & + .score-txt { color: #f00; }
+    }
+
+    &.okay {
+        .sector:nth-child(2) { fill: #E5CC31; }
+
+        & + .score-txt { color: #E5CC31; }
+    }
+
+   /* &.good {
+        .sector:nth-child(4) { fill: #c3d600; }
+
+        & + .score-txt { color: #c3d600; }
+    }*/
+
+    &.great {
+        .sector:nth-child(3) { fill: #c3d600; }
+
+        & + .score-txt { color: #c3d600; }
+    }
+}
+
+#score-card-tool{
+    padding-bottom: 40px;
+    .footer{
+        background-color: $blue;
+        color: $white;
+        padding: 45px 100px;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: -40px;
+        display: none;
+        h2{
+            font-weight: 200;
+            padding: 0;
+            max-width: 500px;
+            display: inline-block;
+            font-family: $roboto-slab;
+        }
+        .cta{
+            text-align: center;
+        }
+    }
+}

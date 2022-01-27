@@ -1,0 +1,826 @@
+/* ---------------------------------------------------------
+   Forms
+   ---------------------------------------------------------*/
+
+// form
+form,
+fieldset {
+    margin: 0;
+    padding: 0;
+    border-style: none;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+input[type='url'],
+input[type='date'],
+textarea {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    box-sizing: border-box;
+    border: 1px solid $form-element-border-color;
+    padding: $form-element-padding;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+
+    &:focus {
+        border-color: $form-element-focus-border-color;
+    }
+
+    @include placeholder {
+        color: $placeholder-color;
+    }
+}
+
+select {
+    -webkit-border-radius: 0;
+}
+
+textarea {
+    resize: vertical;
+    vertical-align: top;
+    min-height: 114px;
+    margin-bottom: 13px;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='file'],
+input[type='submit'] {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+// nice select
+.nice-select {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    outline: none;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+    color: #77777b;
+
+    &:hover,
+    &.open {
+        .current {
+            @include media('>=tablet') {
+                background: #f4f4f4;
+            }
+        }
+    }
+
+    &.open {
+        @extend :active;
+
+        .current {
+            &:after {
+                content: '\e904';
+            }
+        }
+
+        .list {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    &.disabled {
+        border-color: lighten($gray, 2%);
+        color: $gray;
+        pointer-events: none;
+
+        .current {
+            &:after { 
+                border-color: lighten($gray, 20%);
+            }
+        }
+    }
+    
+    &.wide {
+        width: 100%;
+
+        .list {
+            left: 0 !important;
+            right: 0 !important;
+        }
+    }
+
+    &.right {
+        float: right;
+
+        .list {
+            left: auto;
+            right: 0;
+        }
+    }
+
+    .current {
+        padding: 15px 40px 15px 22px;
+        display: block;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        @include media('<tablet') {
+            padding: 10px 31px 10px 0;
+        }
+
+        &:after {
+            content: '\e901';
+            font: normal 19px/1 'icomoon';
+            outline: none;
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            color: $green;
+            transform: translateY(-50%);
+            transition: all 0.15s ease-in-out;
+
+            @include media('<tablet') {
+                right: 5px;
+            }
+        }
+
+        .input-box & {
+            padding-left: 47px;
+        }
+    }
+
+    .form-control {
+        margin-bottom: 0;
+        position: relative;
+        z-index: 3;
+
+        &:focus {
+            outline: none;
+            border-color: $white;
+            box-shadow: none;
+        }
+    }
+
+    .list {
+        background: #f4f4f4;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        line-height: 1.2;
+        transform-origin: 50% 0;
+        transform: scale(.75) translateY(- 42px / 2);
+        transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
+        z-index: 9999;
+        padding: 0;
+        max-height: 340px;
+        overflow-y: auto;
+        margin: 0;
+        width: 283px;
+        padding: 24px 0;
+
+        @include media('<tablet') {
+            width: 162px;
+            font-size: 14px;
+            left: auto;
+            right: 0;
+        }
+    }
+
+    .option {
+        cursor: pointer;
+        font-weight: 400;
+        list-style: none;
+        outline: none;
+        text-align: left;
+        transition: all 0.2s;
+        padding: 5px 25px;
+        text-transform: capitalize;
+
+        @include media('<tablet') {
+            padding: 5px 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &:hover, &.focus, &.selected.focus { 
+            background-color: $blue;
+            color: $white;
+        }
+
+        &.selected { 
+            font-weight: bold;
+        }
+
+        &.disabled {
+            background-color: transparent;
+            color: $gray;
+            cursor: default;
+        }
+
+        &[data-display="Topics"] { display: none; }
+    }
+}
+
+// nice radio and check
+.nice-form {
+    display: inline-block;
+
+    &.nice--gray {
+        .fake-input {
+            background: #d8d8d8;
+        }
+    }
+
+    .fake-input {
+        width: 14px;
+        height: 14px;
+        background: $white;
+        position: relative;
+        display: block;
+
+        &:before {
+            @include animate(all);
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            opacity: 0;
+            transform: translate(-50%,-50%);
+        }
+    }
+
+    input {
+        position:fixed;
+        left:0;
+        top:0;
+        opacity:0;
+        z-index: -1;
+
+        &:checked + .fake-input:before {
+            opacity: 1 !important;
+        }
+
+        &[type="radio"] {
+            & + .fake-input {
+                border-radius: 50%;
+
+                &:before {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: $blue;
+                }
+            }
+        }
+
+        &[type="checkbox"] {
+            & + .fake-input {
+                &:before {
+                    content: '\e90f';
+                    font: 15px/1 'icomoon';
+                    color: $green;
+                }
+            }
+        }
+    }
+}
+
+// form
+.form {
+    @extend %clearfix;
+    max-width: 550px;
+    margin: 0 auto 55px;
+
+    label {
+        font-size: 14px;
+        line-height: 1.2;
+        font-weight: 600;
+        text-transform: capitalize;
+        vertical-align: top;
+        margin-bottom: 6px;
+        float: left;
+
+        em {
+            font-style: normal;
+            color: $red;
+        }
+    }
+
+    .col-wrap {
+        @extend %clearfix;
+
+        .captcha {
+            margin: 0;
+            min-height: 87px;
+
+            .dummy {
+                font-size: 14px;
+            }
+        }
+
+        .btn-sm {
+            width: 100%;
+        }
+    }
+
+    .nice-form {
+        margin-bottom: 22px;
+
+        .fake-input {
+            float: left;
+            margin-right: 14px;
+        }
+
+        .fake-label {
+            display: block;
+            overflow: hidden;
+            text-transform: none;
+        }
+    }
+
+    .col {
+        @include media('>=tablet') {
+            float: left;
+            width: 50%;
+
+            &:first-child {
+                padding-right: 35px;
+            }
+        }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="text"],
+    textarea {
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 25px;
+        height: 39px;
+        padding: 8px 11px;
+
+        @include placeholder {
+            color: #d3d3d3;
+        }
+    }
+
+    .captcha {
+        margin: 22px 0 28px;
+        min-height: 113px;
+        border: 1px solid #dfdfdf;
+        position: relative;
+
+        .dummy {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 32px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+    }
+}
+
+// form contact
+.form-contact {
+    max-width: none;
+    margin-bottom: 30px;
+
+    h2 {
+        margin-bottom: 31px;
+    }
+
+    .col-2 {
+        overflow: hidden;
+        margin-bottom: 15px;
+
+        .col {
+            @include media('>=widescreen') {
+                padding-right: 79px;
+            }
+
+            &:last-child {
+                @include media('>=widescreen') {
+                    padding: 0 40px;
+                }
+            }
+        }
+    }
+}
+
+// form search
+.form-search {
+    border-bottom: 2px solid $gray;
+    margin-bottom: 92px;
+    padding-bottom: 2px;
+
+    @include media('<desktop') {
+        margin-bottom: 35px;
+    }
+
+    .menu-fixed & {
+        @include media('>=desktop') {
+            border-bottom-color: $white;
+        }
+    }
+
+    button {
+        float: left;
+        width: 15px;
+        border: none;
+        background: none;
+        padding: 0;
+        margin-right: 5px;
+        outline: none;
+        color: $gray;
+
+        @include media('<desktop') {
+            font-size: 21px;
+        }
+
+        .menu-fixed & {
+            @include media('>=desktop') {
+                color: $white;
+            }
+        }
+    }
+
+    .input-wrap {
+        overflow: hidden;
+
+        input {
+            background-color: transparent;
+            border: none;
+            color: $gray;
+            outline: none;
+            width: 100%;
+            padding: 0;
+            text-align: right;
+
+            @include media('<desktop') {
+                font-size: 21px;
+            }
+
+            .menu-fixed & {
+                @include media('>=desktop') {
+                    color: $white;
+                }
+            }
+
+            @include placeholder {
+                color: rgba($gray, .49);
+
+                .menu-fixed & {
+                    @include media('>=desktop') {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// search form
+.search-form {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 29px;
+
+    @include media('<tablet') {
+        margin-left: 0;
+    }
+
+    &.search-active {
+        .search-inner {
+            max-width: 400px;
+        }
+
+        .search-drop {
+            transform: translateX(0);
+        }
+
+        // .search-opener {
+        //     @include media('>=tablet') {
+        //         background: #f4f4f4;
+        //     }
+        // }
+    }
+
+    .search-opener {
+        color: #77777b;
+        display: inline-block;
+        vertical-align: top;
+        padding: 15px 19px;
+        font-weight: 600;
+
+        @include media('<tablet') {
+            padding: 10px 0;
+        }
+
+        &:hover {
+            @include media('>=tablet') {
+                background: #f4f4f4;
+            }
+        }
+
+        i {
+            display: inline-block;
+            vertical-align: middle;
+
+            @include media('>=tablet') {
+                margin-left: 17px;
+            }
+        }
+
+        span {
+            @include media('<tablet') {
+                display: none;
+            }
+        }
+    }
+
+    .search-inner {
+        @include animate(max-width);
+        max-width: 0;
+        position: absolute;
+        top: 7px;
+        right: 0;
+        overflow: hidden;
+        z-index: 10;
+
+        @include media('<tablet') {
+            top: -1px;
+        }
+    }
+
+    .search-drop {
+        @include animate(transform);
+        width: 290px;
+        transform: translateX(100%);
+        padding-right: 38px;
+
+        input[type="text"],
+        input[type="search"] {
+            width: 100%;
+            border: none;
+            height: 42px;
+            line-height: 28px;
+            background: #f4f4f4;
+            @include placeholder {
+                color: #b9b9b9;
+            }
+        }
+
+        button,
+        .hs-button {
+            @include animate(background);
+            width: 38px;
+            height: 42px;
+            background: $blue;
+            color: $white;
+            border: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 6px;
+            font-size: 14px;
+            line-height: 34px;
+            text-align: center;
+
+            &:after {
+                content: '\e90d';
+                font: 18px/1 'icomoon';
+            }
+
+            &:hover {
+                background: lighten($blue,15%);
+            }
+        }
+    }
+}
+
+// form subscribe
+.form-subscribe {
+    @include media('>=tablet') {
+        display: inline-block;
+        width: 549px;
+        vertical-align: top;
+    }
+
+    @include media('<tablet') {
+        margin-bottom: 18px;
+    }
+
+    .form-group {
+        overflow: hidden;
+    }
+
+    .msg {
+        display: block;
+        font-weight: 600;
+        font-size: 16px;
+        color: #b4b4b4;
+        padding: 9px 0;
+    }
+
+    .input-wrap {
+        overflow: hidden;
+
+        input {
+            height: 40px;
+            line-height: 28px;
+            @include placeholder {
+                color: #b9b9b9;
+            }
+        }
+    }
+
+    .btn {
+        float: right;
+        font-size: 18px;
+        min-width: 210px;
+        padding: 7px 15px 9px;
+
+        @include media('<tablet') {
+            min-width: 125px;
+            line-height: 1.35;
+        }
+
+        @include media('<phone') {
+            float: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    .page-header {
+        display: none;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+
+        @include media('>=phone') {
+            padding-right: 125px;
+        }
+
+        @include media('>=widescreen-lg') {
+            padding-right: 209px;
+        }
+
+        h3 {display: none !important;}
+
+        > div {
+            @include media('>=phone') {
+                padding-bottom: 0 !important;
+            }
+
+            input {
+                width: 100% !important;
+                height: 39px;
+                padding: 6px 11px !important;
+                line-height: 25px;
+            }
+        }
+
+        .hs-button {
+            padding: 7px 10px;
+            background: $green;
+            border: none;
+            color: $white;
+            height: 39px;
+
+            @include media('>=phone') {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 125px;
+            }
+
+            @include media('>=widescreen-lg') {
+                width: 209px;
+            }
+        }
+    }
+}
+
+// hs_cos_wrapper_type_post_filter
+.hs_cos_wrapper_type_post_filter {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+
+    &:hover,
+    &.active {
+        h3 {
+            @include media('>=tablet') {
+                background: #f4f4f4;
+            }
+        }
+
+
+        .widget-module {
+            display: block;
+        }
+    }
+
+    h3 {
+        padding: 15px 40px 15px 22px;
+        font-weight: 600;
+        text-transform: capitalize;
+        position: relative;
+        font-size: 18px;
+        color: #77777b;
+        margin-bottom: 0;
+        cursor: pointer;
+
+        @include media('<tablet') {
+            padding: 10px 31px 10px 0;
+        }
+
+        &:after {
+            content: '\e901';
+            font: normal 19px/1 'icomoon';
+            outline: none;
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            color: $green;
+            transform: translateY(-50%);
+            transition: all 0.15s ease-in-out;
+
+            @include media('<tablet') {
+                right: 5px;
+            }
+        }
+    }
+
+    .widget-module {
+        background: #f4f4f4;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        line-height: 1.2;
+        max-height: 340px;
+        overflow-y: auto;
+        width: 283px;
+        padding: 24px 0;
+        display: none;
+
+        @include media('<tablet') {
+            width: 162px;
+            font-size: 14px;
+            left: auto;
+            right: 0;
+            padding: 10px 0;
+        }
+
+        ul {
+            @extend %listreset;
+
+            a {
+                cursor: pointer;
+                font-weight: 400;
+                list-style: none;
+                outline: none;
+                text-align: left;
+                transition: all 0.2s;
+                padding: 5px 25px;
+                display: block;
+                text-transform: capitalize;
+
+                @include media('<tablet') {
+                    padding: 5px 15px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:hover { 
+                    background-color: $blue;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

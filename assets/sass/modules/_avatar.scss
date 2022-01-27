@@ -1,0 +1,202 @@
+/* ---------------------------------------------------------
+   Avatar
+   ---------------------------------------------------------*/
+
+// avatar
+.avatar {
+    margin: 0 0 58px;
+
+    @include media('<widescreen') {
+        margin-bottom: 34px;
+    }
+
+    &-img {
+        position: relative;
+        display: block;
+
+        img {
+            width: 100%;
+        }
+
+        &:hover {
+            .avatar-overlay {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &-overlay {
+        @include animate(visibility opacity);
+        @include v-align(100%, bottom, after);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba($green, 0.7);
+        padding: 13px;
+        color: $white;
+        text-align: right;
+        opacity: 0;
+        visibility: hidden;
+
+        @include media('<widescreen') {
+            font-size: 12px;
+        }
+
+        span {
+            &:after {
+                content: '\e909';
+                font: 400 20px/1 'icomoon';
+                margin-left: 24px;
+
+                @include media('<widescreen-lg') {
+                    margin-left: 11px;
+                }
+
+                @include media('<widescreen') {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+    &-body {
+        padding-top: 22px;
+        line-height: 1.29;
+        min-height: 115px;
+
+        @include media('<widescreen') {
+            padding-top: 16px;
+        }
+
+        @include media('<tablet') {
+            padding-top: 11px;
+        }
+
+        span {
+            display: block;
+        }
+    }
+
+    &-name,
+    &-position {
+        text-transform: capitalize;
+    }
+
+    &-name {
+        font-size: 16px;
+        font-weight: 400;
+
+        @include media('>=widescreen') {
+            font-size: 24px;
+        }
+    }
+
+    &-position {
+        @include media('<widescreen') {
+            font-size: 12px;
+        }
+    }
+}
+
+// avatar bio
+.avatar_bio {
+    @extend %clearfix;
+    background: $blue;
+    color: $white;
+    font-size: 24px;
+    margin-bottom: 41px;
+
+    @include media('<widescreen-lg') {
+        font-size: 18px;
+    }
+
+    @include media('<tablet') {
+        font-size: 14px;
+    }
+
+    .avatar-img {
+        float: left;
+        width: 274px;
+        margin-right: 20px;
+        position: relative;
+
+        @include media('<tablet') {
+            width: 180px;
+            margin-left: -30px;
+        }
+
+        @include media('<phone') {
+            width: 120px;
+            margin-right: 15px;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-top: 5px solid $green;
+        }
+    }
+
+    .avatar-body {
+        overflow: hidden;
+        padding: 37px 0 34px;
+        line-height: 1.37;
+
+        @include media('<widescreen') {
+            padding: 29px 0;
+        }
+
+        @include media('<tablet') {
+            padding: 16px 0;
+        }
+
+        @include media('<phone') {
+            padding-top: 35px;
+        }
+    }
+
+    .avatar-position {
+        font-size: 18px;
+
+        @include media('<tablet') {
+            font-size: 16px;
+        }
+    }
+
+    .avatar-name {
+        font-size: 42px;
+        margin-bottom: 27px;
+
+        @include media('<widescreen') {
+            margin-bottom: 14px;
+        }
+
+        @include media('<tablet') {
+            font-size: 30px;
+            margin-bottom: 6px;
+        }
+
+        @include media('<phone') {
+            font-size: 24px;
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+
+        @include media('<tablet') {
+            max-height: 76px;
+            overflow: hidden;
+        }
+
+        @include media('<phone') {
+            display: none;
+        }
+    }
+}

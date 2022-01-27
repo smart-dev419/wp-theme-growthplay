@@ -1,0 +1,1 @@
+@include('views/case-study-template')

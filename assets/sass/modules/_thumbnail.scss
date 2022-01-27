@@ -1,0 +1,150 @@
+/* ---------------------------------------------------------
+   Thumbnail
+   ---------------------------------------------------------*/
+
+// thumbnail
+.thumbnail {
+    position: relative;
+
+    @include media('>=tablet') {
+        color: $white;
+    }
+
+    @include media('<desktop') {
+        font-size: 16px;
+    }
+
+    &--green {
+        .thumbnail-title,
+        .btn {
+            background: $green;
+        }
+        .btn {
+            &:hover {
+                background: $green1;
+            }
+        }
+    }
+
+    &--orange {
+        .thumbnail-title,
+        .btn {
+            background: $orange;
+        }
+        .btn {
+           &:hover {
+               background: #bb9e19;
+           }
+        }
+    }
+
+    &--red {
+        .thumbnail-title,
+        .btn {
+            background: $red;
+        }
+        .btn {
+           &:hover {
+               background: #aa4c06;
+           }
+        }
+    }
+
+    &-title {
+        padding: 26px 20px 21px;
+        font-weight: 600;
+        margin-bottom: 0;
+        line-height: 1.15;
+        min-height: 105px;
+
+        @include media('<tablet') {
+            display: none;
+        }
+    }
+
+    &-body {
+        padding: 47px 0 61px;
+        min-height: 356px;
+
+        @include media('<widescreen-lg') {
+            min-height: 373px;
+        }
+
+        @include media('<widescreen') {
+            padding-top: 30px;
+        }
+
+        @include media('<tablet') {
+            padding: 19px 30px 25px;
+            min-height: 100px;
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+
+    h3 {
+        margin-bottom: 30px;
+
+        @include media('<tablet') {
+            margin-bottom: 22px;
+        }
+    }
+
+    p {
+        margin-bottom: 15px;
+
+        @include media('<tablet') {
+            margin-bottom: 22px;
+        }
+    }
+
+    a {
+        @include media('>=tablet') {
+            color: $white;
+        }
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding-left: 24px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        @include media('<widescreen') {
+            font-size: 16px;
+            min-width: 120px;
+        }
+
+        @include media('<tablet') {
+            position: static;
+            color: $white;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        span {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        &:after {
+            content: '\e909';
+            font: 400 24px/1 'icomoon';
+            position: absolute;
+            right: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @include media('<widescreen') {
+                font-size: 18px;
+            }
+        }
+    }
+}

@@ -1,0 +1,171 @@
+/* ---------------------------------------------------------
+   Card
+   ---------------------------------------------------------*/
+
+// card list
+.list-card {
+    @extend %listreset;
+    @extend .flex;
+    margin: 0 -2px;
+
+    + .text-right {
+        margin-bottom: 40px;
+    }
+
+    > li {
+        width: 25%;
+        padding: 0 2px 73px;
+
+        @include media('<widescreen') {
+            padding-bottom: 20px;
+        }
+
+        @include media('<tablet') {
+            width: 50%;
+        }
+    }
+
+    .card-img{
+        > a > .img{
+            background-size: cover;
+            background-position: center center;
+            width: 100%;
+            min-height: 245px;
+        }
+    }
+
+    &.resources {
+        .card-img {
+            img {
+                width: 100%;
+                height: 245px;
+                @include object-fit-position(cover, center, top);
+                @include media('>=desktop', '<widescreen-lg') {
+                    height: 17.3vw;
+                }
+                @include media('>=tablet', '<desktop') {
+                    height: 22vw;
+                }
+                @include media('<tablet') {
+                   height: 43vw;
+                }
+            }
+        }
+    }
+}
+
+// card
+.card {
+    border-bottom: 5px solid transparent;
+    background: #f1eff0;
+    position: relative;
+    height: 100%;
+
+    @mixin bbc($color) {
+        border-bottom-color: $color;
+    }
+
+    &--green { @include bbc($green); }
+
+    &--orange { @include bbc($orange); }
+
+    &--blue { @include bbc($blue); }
+
+    &--blue_light { @include bbc(#00acc8); }
+
+    &--blue_dark { @include bbc(#003764); }
+
+    &--red { @include bbc($red); }
+
+    &--red_light { @include bbc(#ff8571); }
+
+    &--yellow { @include bbc($yellow); }
+
+    &-body {
+        padding: 25px 23px 45px;
+        min-height: 291px;
+
+        @include media('<widescreen') {
+            min-height: 249px;
+        }
+
+        @include media('<tablet') {
+            padding: 17px 13px 31px;
+            min-height: 162px;
+        }
+    }
+
+    &-subtitle {
+        display: block;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+
+        @include media('<widescreen') {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+    }
+
+    &-link {
+        position: absolute;
+        bottom: 12px;
+        right: 13px;
+        color: $gray;
+
+        @include media('<widescreen') {
+            font-size: 12px;
+        }
+
+        &:after {
+            content: '\e909';
+            font: 400 21px/1 'icomoon';
+            margin-left: 27px;
+
+            @include media('<widescreen') {
+                font-size: 13px;
+                margin-left: 15px;
+            }
+        }
+    }
+
+    img, .b2b {
+        width: 100%;
+        min-height: 181px;
+    }
+    .b2b{
+        background-color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #d9d9d9;
+        border-bottom: 0;
+        min-height: 245px;
+        img{
+            max-height: 150px;
+            width: 70%;
+            height: auto;
+            min-height: initial;
+            &[alt="gm"]{
+                width: 60%;
+            }
+        }
+    }
+
+    h3 {
+        font-weight: 300;
+
+        @include media('<widescreen') {
+            font-size: 17px;
+            line-height: 1.23;
+        }
+
+        @include media('<tablet') {
+            line-height: 1.14;
+        }
+
+        a {
+            color: $gray;
+        }
+    }
+}

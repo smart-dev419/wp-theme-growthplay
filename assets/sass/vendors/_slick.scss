@@ -1,0 +1,166 @@
+/* ---------------------------------------------------------
+   Slick
+   ---------------------------------------------------------*/
+
+// slick slider
+.slick-slider {
+    position: relative;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+
+    &.slick-initialized {
+        .slick-slide {
+            display: block;
+
+            .carousel-sm & {
+                display: table !important;
+            }
+
+            .bild-detail & {
+                padding: 0 1px;
+            }
+        }
+    }
+
+    .slick-list {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        transform: translate3d(0, 0, 0);
+
+        &:focus { outline: none; }
+
+        &.dragging {
+            cursor: pointer;
+            cursor: hand;
+        }
+    }
+
+    .slick-track {
+        transform: translate3d(0, 0, 0);
+        position: relative;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        height: 100%;
+
+        &:after {
+            display: table;
+            content: '';
+            clear: both;
+        }
+    }
+
+    .slick-slide {
+        display: none;
+        float: left;
+        min-height: 1%;
+        height: 100%;
+        position: relative;
+        outline: none;
+    }
+}
+
+// slick dots
+.slick-dots {
+    @extend %listreset;
+    line-height: 0;
+    text-align: center;
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+
+    @include media('<tablet') {
+        bottom: 21px;
+    }
+
+    .carousel-sm & {
+        bottom: -37px;
+    }
+
+    li {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 1;
+        margin: 0 12px;
+
+        @include media('<tablet') {
+            margin: 0 5px;
+        }
+
+        &.slick-active button,
+        button:hover {
+            background: $green;
+
+            .carousel-sm & {
+                background: #00749a;
+            }
+
+            .bg-purple & {
+                background: $purple;
+            }
+        }
+    }
+
+    button {
+        @include animate(all);
+        @include hide-text;
+        background: $white;
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        outline: none;
+
+        @include media('<tablet') {
+            width: 10px;
+            height: 10px;
+        }
+
+        .carousel-sm & {
+            background: #e5e3e3;
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+
+// slick arrow
+.slick-arrow {
+    color: $white;
+    font: 52px/1 'icomoon';
+    z-index: 2;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:hover,
+    &:focus {
+        color: lighten($blue,15%);
+    }
+}
+
+// slick prev
+.slick-prev {
+    left: -50px;
+
+    &:before {
+        content: '\e91a';
+    }
+}
+
+// slick next
+.slick-next {
+    right: -50px;
+
+    &:before {
+        content: '\e91b';
+    }
+}

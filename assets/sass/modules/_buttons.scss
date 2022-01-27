@@ -1,0 +1,54 @@
+/* ---------------------------------------------------------
+   Buttons
+   ---------------------------------------------------------*/
+
+// btn
+.btn {
+    @include animate(background-color color);
+    display: inline-block;
+    padding: 11px 46px 13px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: capitalize;
+    min-width: 274px;
+    text-align: center;
+    position: relative;
+
+    @include media('<tablet') {
+        min-width: 260px;
+        padding: 9px 33px 10px;
+        font-size: 18px;
+        line-height: 1.9;
+    }
+}
+
+.btn-sm {
+    min-width: 150px;
+    padding: 7px 10px;
+    line-height: 1;
+}
+
+// btn green
+.btn-green {
+    background-color: $green;
+    color: $white;
+
+    &:hover {
+        background-color: darken($green, 15%);
+        color: $white;
+    }
+}
+
+// btn blue
+.btn-blue {
+    background-color: $blue;
+    color: $white;
+
+    &:hover, &:focus {
+        background-color: darken($blue, 15%);
+        color: $white;
+    }
+}

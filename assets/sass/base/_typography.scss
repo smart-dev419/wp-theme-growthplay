@@ -1,0 +1,79 @@
+/* ---------------------------------------------------------
+   Typography
+   ---------------------------------------------------------*/
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.h {
+    font-family: $headings-font-family;
+    font-weight: 400;
+    margin: 0 0 0.5em;
+    color: $headings-color;
+}
+
+h1, .h1, .h1-sm {
+    font-size: $h1-font-size;
+    font-family: $roboto-slab;
+    line-height: 1.2;
+    font-weight: 300;
+    color: $blue;
+
+    @include media('<widescreen-lg') {
+        font-size: 42px;
+    }
+}
+
+.h1-sm {
+    font-size: 42px;
+
+    @include media('<widescreen-lg') {
+        font-size: 30px;
+    }
+}
+
+h2, .h2 {
+    font-size: $h2-font-size;
+
+    @include media('<widescreen-lg') {
+        font-size: 26px;
+    }
+}
+
+h3, .h3 {
+    font-size: $h3-font-size;
+
+    @include media('<widescreen-lg') {
+        font-size: 22px;
+    }
+}
+
+h4, .h4 {
+    font-size: $h4-font-size;
+}
+
+h5, .h5 {
+    font-size: $h5-font-size;
+}
+
+h6, .h6 {
+    font-size: $h6-font-size;
+}
+
+p {
+    margin: 0 0 26px;
+}
+
+a {
+    @include animate(color);
+    color: $base-link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: $blue;
+    }
+}

@@ -1,0 +1,123 @@
+/* ---------------------------------------------------------
+   Teaser
+   ---------------------------------------------------------*/
+
+// teaser
+.teaser {
+    background: $orange;
+    position: relative;
+    color: $white;
+
+    &-img {
+        background-size: 100% auto;
+        background-position: top left;
+        background-repeat: no-repeat;
+        
+        @include media('>=tablet') {
+            position: absolute;
+            width: 50%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            img{
+                max-width: inherit;
+                height: 100%;
+                width: auto;
+                margin-left: -120px;
+            }
+        }
+
+        @include media('<tablet') {
+            margin: 0 -30px;
+            height: 267px;
+        }
+    }
+
+    &-body {
+        padding: 52px 0 56px 56px;
+        float: right;
+        width: 50%;
+
+        @include media('<widescreen') {
+            padding: 52px 0 30px 29px;
+        }
+
+        @include media('<tablet') {
+            float: none;
+            width: auto;
+            padding: 45px 0 40px;
+        }
+    }
+
+    .logo {
+        margin-bottom: 34px;
+
+        @include media('<tablet') {
+            margin-bottom: 18px;
+        }
+    }
+}
+
+.teaser-wrap {
+    background: #f1eff0;
+    padding-bottom: 40px;
+
+    h2 {
+        color: $gray;
+
+        @include media('<tablet') {
+            margin-bottom: 29px;
+        }
+    }
+
+    h3 {
+        margin: 98px 0 61px;
+        line-height: 1.46;
+
+        @include media('<tablet') {
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 1.26;
+            margin: 40px 0 32px;
+        }
+    }
+
+    p {
+        @include media('<tablet') {
+            margin-bottom: 35px;
+        }
+    }
+
+    .teaser_1 {
+        margin-bottom: 22px;
+    }
+}
+
+.teaser_1 {
+    @extend .teaser;
+    background: #f1eff0;
+    color: $gray;
+
+    .teaser-img {
+        left: auto;
+        right: 0;
+
+        @include media('<tablet') {
+            height: 332px;
+        }
+    }
+
+    .teaser-body {
+        float: left;
+        padding: 110px 56px 65px 0;
+
+        @include media('<tablet') {
+            padding: 57px 0 20px;
+        }
+    }
+
+    h2 {
+        color: $gray;
+    }
+}

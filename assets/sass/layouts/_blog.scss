@@ -1,0 +1,496 @@
+/* ---------------------------------------------------------
+Blog
+---------------------------------------------------------*/
+
+// blog list
+.blog-list {
+    margin-bottom: 39px;
+    min-height: 180px;
+}
+
+// blog
+.blog {
+    border-bottom: 1px solid #7e7e7e;
+    box-shadow: 0 1px 0 0 #d7d7d7;
+    padding-bottom: 14px;
+
+    @include media('<tablet') {
+        font-size: 15px;
+    }
+
+    + .blog {
+        margin-top: 58px;
+
+        @include media('<tablet') {
+            margin-top: 44px;
+        }
+    }
+
+    .blog-row {
+        overflow: hidden;
+
+        @include media('<phone') {
+            overflow: visible;
+        }
+
+        + .blog-row {
+            margin-top: 13px;
+
+            .blog-left {
+                @include media('<tablet') {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .blog-left {
+        float: left;
+        width: 226px;
+        margin-right: 47px;
+
+        @include media('<widescreen') {
+            width: 190px;
+            margin-right: 25px;
+        }
+
+        @include media('<tablet') {
+            margin-right: 15px;
+            width: 145px;
+        }
+
+        @include media('<phone') {
+            float: none;
+            width: auto;
+            margin: 0 -30px;
+        }
+    }
+
+    .blog-body {
+        @include media('>=tablet') {
+            overflow: hidden;
+        }
+    }
+
+    .blog-heading {
+        margin-bottom: 27px;
+
+        @include media('<tablet') {
+            margin-bottom: 16px;
+        }
+    }
+
+    h2 {
+        font-size: 42px;
+        font-weight: 300;
+        line-height: 1.2;
+        margin-bottom: 23px;
+
+        @include media('<widescreen') {
+            font-size: 32px;
+        }
+
+        @include media('<tablet') {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+    }
+
+    p {
+        @include media('<tablet') {
+            margin-bottom: 15px;
+        }
+    }
+
+    .blog-img {
+        display: block;
+        margin: 8px 0 16px;
+
+        @include media('<tablet') {
+            margin-top: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &-meta {
+        font-weight: 600;
+
+        @include media('<tablet') {
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .by {
+            float: left;
+            font-size: 24px;
+
+            @include media('<widescreen') {
+                font-size: 18px;
+            }
+
+            @include media('<tablet') {
+                float: none;
+                margin-bottom: 33px;
+            }
+        }
+
+        .social-links {
+            float: right;
+
+            @include media('<tablet') {
+                float: none;
+            }
+        }
+    }
+
+    &-tag {
+        @extend %listreset;
+        color: $green;
+
+        @include media('>=phone') {
+            float: left;
+            max-width: 70%;
+        }
+
+        @include media('<phone') {
+            margin-bottom: 17px;
+        }
+
+        > li {
+            display: inline;
+
+            + li {
+                &:before {
+                    content: ',';
+                    margin: 0 5px 0 1px;
+                }
+            }
+        }
+
+        a {
+            color: $green;
+
+            &:hover {
+                color: darken($green, 15%);
+            }
+        }
+        span {
+            color: $green;
+        }
+    }
+
+    .link {
+        @include media('>=phone') {
+            float: right;
+        }
+    }
+
+    .social-links {
+        padding: 0;
+        margin-left: 0;
+
+        > li {
+            margin-left: 19px;
+
+            @include media('<widescreen-lg') {
+                margin-left: 15px;
+            }
+
+            @include media('<widescreen') {
+                margin-left: 8px;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+// blog hero
+.blog-hero {
+    background: $orange;
+    padding: 32px 0;
+    color: $white;
+    margin-bottom: 42px;
+
+    h1 {
+        color: $white;
+        font-size: 55px;
+        line-height: 1.2;
+        margin-bottom: 19px;
+
+        @include media('<widescreen-lg') {
+            font-size: 42px;
+            margin-bottom: 28px;
+        }
+
+        @include media('<widescreen') {
+            font-size: 32px;
+        }
+
+        @include media('<tablet') {
+            margin-bottom: 10px;
+        }
+    }
+
+    .blog-meta {
+        @include media('<tablet') {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: $white;
+        }
+    }
+
+    .social-links {
+        margin: 7px 0 0;
+
+        @include media('<widescreen') {
+            margin-top: 0;
+        }
+
+        @include media('<tablet') {
+            margin: 0;
+        }
+
+        li {
+            margin-left: 31px;
+
+            @include media('<tablet') {
+                margin-left: 21px;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+// blog single
+.blog-single {
+    h3 {
+        color: $blue;
+        margin-bottom: 27px;
+        font-weight: 600;
+    }
+
+    p {
+        a {
+            color: $orange;
+            font-weight: 700;
+
+            &:hover {
+                color: darken($orange, 15%);
+            }
+        }
+    }
+
+    .img-right {
+        @include media('<widescreen') {
+            width: 300px;
+        }
+
+        @include media('<tablet') {
+            float: none;
+            width: auto;
+            margin: 0 0 20px;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .form,
+    .post-footer {
+        margin: 0 24.5% 55px;
+        max-width: none;
+
+        @include media('<widescreen-lg') {
+            margin: 0 20% 55px;
+        }
+
+        @include media('<widescreen') {
+            margin: 0 10% 40px;
+        }
+
+        @include media('<tablet') {
+            margin: 0 0 35px;
+        }
+
+        .col {
+            @include media('<tablet') {
+                float: none;
+                width: auto;
+                padding-right: 0;
+            }
+
+            &:first-child {
+                @include media('<tablet') {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .input {
+            margin: 5px 0 12px;
+        }
+
+        input[type=checkbox] {
+            margin-right: 10px;
+        }
+
+        .hs-error-msgs {
+            @extend %listreset;
+            color: $white;
+            border: 1px solid $red;
+            padding: 8px 17px;
+            border-radius: 4px;
+            background: lighten($red, 10%);
+        }
+    }
+}
+
+// blog footer
+.blog-footer {
+    padding: 21px 0 6px;
+    overflow: hidden;
+    border-bottom: 1px solid #7e7e7e;
+    box-shadow: 0 1px 0 0 #d7d7d7;
+    margin-bottom: 35px;
+
+    .topics {
+        float: left;
+
+        > span {
+            float: left;
+            margin-right: 4px;
+        }
+
+        .blog-tag {
+            float: none;
+            display: inline;
+        }
+    }
+
+    .link {
+        float: right;
+    }
+}
+
+// comments
+.comment-list {
+    @extend %listreset;
+    margin-left: 24.5%;
+
+    @include media('<widescreen-lg') {
+        margin-left: 20%;
+    }
+
+    @include media('<widescreen') {
+        margin-left: 10%;
+    }
+
+    @include media('<tablet') {
+        margin-left: 0;
+    }
+
+    .comment-list {
+        margin-left: 15%;
+
+        @include media('<tablet') {
+            margin-left: 30px;
+        }
+    }
+}
+
+// comment
+.comment {
+    @extend %clearfix;
+    font-size: 16px;
+    line-height: 1.2;
+    border-top: none !important;
+    border-bottom: 1px solid #7e7e7e;
+    box-shadow: 0 1px 0 0 #d7d7d7;
+    padding-bottom: 17px;
+    margin-bottom: 41px;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+
+    .name,
+    h4 {
+        display: block;
+        font-size: 24px;
+        text-transform: capitalize;
+        color: $blue;
+        margin-bottom: 4px;
+
+        a {
+            color: $blue;
+        }
+    }
+
+    .comment-date {
+        display: block;
+        margin-bottom: 19px;
+    }
+
+    p {
+        margin-bottom: 7px;
+    }
+
+    .reply {
+        font-size: 14px;
+        font-weight: 700;
+        color: $blue;
+
+        &:after {
+            content: '>';
+            margin-left: 5px;
+        }
+    }
+
+    .comment-reply-to {
+        float: right;
+    }
+}
+
+.new-comments {
+    .hs-button:not(.comment-reply-to) {
+        @include animate(background-color color);
+        display: inline-block;
+        padding: 11px 46px 13px;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: capitalize;
+        min-width: 274px;
+        text-align: center;
+        position: relative;
+        background-color: $green;
+        color: $white;
+
+        @include media('<tablet') {
+            min-width: 260px;
+            padding: 9px 33px 10px;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        &:hover {
+            background-color: darken($green, 15%);
+            color: $white;
+        }
+    }
+
+    #captcha_wrapper {
+        margin-bottom: 30px;
+    }
+}

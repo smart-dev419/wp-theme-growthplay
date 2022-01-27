@@ -1,0 +1,60 @@
+$breakpoints: (
+  'xs-phone': 375px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px,
+  'widescreen-lg': 1420px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// ligatured operators ≥ ≤
+
+@import 'base/variables';
+@import 'vendors/include-media';
+@import 'vendors/icomoon';
+@import 'vendors/normalize';
+
+@import 'base/functions';
+@import 'base/mixins';
+@import 'base/helpers';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/forms';
+
+@import 'vendors/slick';
+
+@import 'modules/grid';
+@import 'modules/utilities';
+@import 'modules/buttons';
+@import 'modules/media';
+@import 'modules/thumbnail';
+@import 'modules/avatar';
+@import 'modules/testimonial';
+@import 'modules/page-title';
+@import 'modules/card';
+@import 'modules/teaser';
+@import 'modules/methods';
+@import 'modules/post';
+@import 'modules/news-highlights';
+@import 'modules/box-logo';
+@import 'modules/ico';
+@import 'modules/boxes';
+@import 'modules/partner-page';
+
+@import 'layouts/menu-wrap';
+@import 'layouts/visual';
+@import 'layouts/score';
+@import 'layouts/blog';
+@import 'layouts/contact-content';
+@import 'layouts/common';

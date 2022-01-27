@@ -1,0 +1,159 @@
+// grid generator
+@mixin make-column($columns, $gutter-width) {
+	width: percentage(($columns / $grid-count));
+}
+
+@mixin make-offset($columns, $gutter-width) {
+	margin-left: percentage(($columns / $grid-count));
+}
+
+@mixin make-row($gutter-width){
+	margin-left: ($gutter-width / -2);
+	margin-right: ($gutter-width / -2);
+}
+
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+    @for $i from (1 + 1) through $grid-count {
+        $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+    }
+
+    #{$list} {
+        position: relative;
+        min-height: 1px;
+        padding-left:  ($gutter-width / 2);
+        padding-right: ($gutter-width / 2);
+    }
+
+    @for $i from (1) through $grid-count {
+        .#{col-xs}-#{$i} {
+            @include make-column($i,20)
+        }
+
+        .#{col-xs-offset}-#{$i} {
+            @include make-offset($i,20)
+        }
+    }
+
+    @include media('>=phone') {
+        @for $i from (1) through $grid-count {
+            .#{col-sm}-#{$i} {
+                @include make-column($i,20)
+            }
+
+            .#{col-sm-offset}-#{$i} {
+                @include make-offset($i,20)
+            }
+        }
+    }
+
+    @include media('>=tablet') {
+        @for $i from (1) through $grid-count {
+            .#{col-md}-#{$i} {
+                @include make-column($i,20)
+            }
+
+            .#{col-md-offset}-#{$i} {
+                @include make-offset($i,20)
+            }
+        }
+    }
+
+    @include media('>=desktop') {
+        @for $i from (1) through $grid-count {
+            .#{col-lg}-#{$i} {
+                @include make-column($i,20)
+            }
+
+            .#{col-lg-offset}-#{$i} {
+                @include make-offset($i,20)
+            }
+        }
+    }
+
+    $list1 : '.col-xs-#{$i}';
+    @for $i from (1 + 1) through $grid-count {
+        $list1: "#{$list1}, .col-xs-#{$i}";
+    }
+    #{$list1} {
+        float: left;
+    }
+
+    @include media('>=phone') {
+        $list1 : '.col-sm-#{$i}';
+        @for $i from (1 + 1) through $grid-count {
+            $list1: "#{$list1}, .col-sm-#{$i}";
+        }
+
+        #{$list1} {
+            float: left;
+        }
+    }
+
+    @include media('>=tablet') {
+        $list1 : '.col-md-#{$i}';
+        @for $i from (1 + 1) through $grid-count {
+            $list1: "#{$list1}, .col-md-#{$i}";
+        }
+
+        #{$list1} {
+            float: left;
+        }
+    }
+
+    @include media('>=desktop') {
+        $list1 : '.col-lg-#{$i}';
+        @for $i from (1 + 1) through $grid-count {
+            $list1: "#{$list1}, .col-lg-#{$i}";
+        }
+
+        #{$list1} {
+            float: left;
+        }
+    }
+
+    .grid {
+        @include make-row($gutter-width);
+        @extend %clearfix;
+    }
+
+    .container{
+        padding-left: ($gutter-container / 2);
+        padding-right: ($gutter-container / 2);
+        margin: 0 auto;
+        max-width: ($container-width + $gutter-container);
+        @extend %clearfix;
+    }
+
+    .container-grid {
+        @extend .container;
+        padding: 0;
+    }
+
+    .container-flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: ($container-width + $gutter-container);
+
+        @include media('<tablet') {
+            padding: 0 15px;
+        }
+
+        [class*="col-"] {
+            float: none;
+        }
+    }
+}
+
+@include make-grid-columns;
+
+// pull left
+.pull-left {
+	float: left;
+}
+
+// pull right
+.pull-right {
+	float: right;
+}
